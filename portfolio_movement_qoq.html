@@ -17,11 +17,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Ar
 .cell.label-cell{border-left:none;border-right:1px solid #f5f3ee;display:flex;align-items:center;gap:8px}
 .count{font-size:22px;font-weight:700;line-height:1}
 .count-sub{font-size:11px;color:#999;margin-top:4px}
-.badge-wrap{display:flex;align-items:baseline;gap:6px}
+.badge-wrap{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
 .badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;cursor:pointer;user-select:none;transition:opacity .15s;white-space:nowrap}
 .badge:hover{opacity:.75}
-.badge-up{background:#EAF3DE;color:#1D9E75}
-.badge-down{background:#FCEBEB;color:#E24B4A}
+.badge-up{background:#FCEBEB;color:#E24B4A}
+.badge-down{background:#EAF3DE;color:#1D9E75}
 .badge-active{outline:2px solid currentColor;outline-offset:1px}
 .tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;white-space:nowrap}
 .tag-expand{background:#EAF3DE;color:#1D9E75}
@@ -37,6 +37,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Ar
 .mover-tags{flex-shrink:0;padding-top:2px;display:flex;align-items:center;gap:4px;min-width:220px}
 .mover-text{flex:1;font-size:12px;color:#555;line-height:1.65}
 .arrow{color:#ccc;font-size:11px}
+.method-note{font-size:11px;color:#888;margin-top:18px;padding:10px 14px;background:#f7f6f2;border-radius:6px;line-height:1.6}
 </style>
 </head>
 <body>
@@ -48,151 +49,143 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Ar
   <!-- Headers -->
   <div class="grid-row" style="border-bottom:2px solid #e8e6df">
     <div class="cell label-cell" style="border-right:1px solid #e8e6df"></div>
-    <div class="cell" style="background:#fff"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa">FY26 Q4</div><div style="font-size:11px;color:#bbb;margin-top:1px">Jan 2026</div></div>
-    <div class="cell" style="background:#fafaf8"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa">FY27 Q1</div><div style="font-size:11px;color:#bbb;margin-top:1px">Apr 2026</div></div>
-    <div class="cell" style="background:#f5f4f1"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa">FY27 Q2 <span style="font-size:9px;background:#EAF3DE;color:#1D9E75;padding:1px 5px;border-radius:3px;margin-left:4px;font-weight:600">CURRENT</span></div><div style="font-size:11px;color:#bbb;margin-top:1px">May 2026</div></div>
+    <div class="cell" style="background:#fff">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa">FY26 Q4</div>
+      <div style="font-size:11px;color:#bbb;margin-top:1px">Jan 2026</div>
+    </div>
+    <div class="cell" style="background:#fafaf8">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa">FY27 Q1</div>
+      <div style="font-size:11px;color:#bbb;margin-top:1px">Apr 2026</div>
+    </div>
+    <div class="cell" style="background:#f5f4f1">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa">FY27 Q2 <span style="font-size:9px;background:#EAF3DE;color:#1D9E75;padding:1px 5px;border-radius:3px;margin-left:4px;font-weight:600">CURRENT</span></div>
+      <div style="font-size:11px;color:#bbb;margin-top:1px">May 2026</div>
+    </div>
   </div>
 
   <!-- EXPAND -->
   <div class="grid-row">
-    <div class="cell label-cell"><span style="width:3px;height:28px;background:#1D9E75;border-radius:2px;flex-shrink:0"></span><span style="font-size:12px;font-weight:700;color:#1D9E75;text-transform:uppercase;letter-spacing:.05em">Expand</span></div>
-    <div class="cell" style="background:#fff"><div class="count">2 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><div class="count-sub">$2.7M ARR</div></div>
-    <div class="cell" style="background:#fafaf8">
-      <div class="badge-wrap"><div class="count">0 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><span class="badge badge-down" onclick="toggle('expand-apr-out')">&minus;2 out</span></div>
-      <div class="count-sub">$0.0M ARR</div>
-    </div>
-    <div class="cell" style="background:#f5f4f1">
-      <div class="badge-wrap"><div class="count">2 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><span class="badge badge-up" onclick="toggle('expand-may-in')">+2 in</span></div>
-      <div class="count-sub">$1.8M ARR</div>
-    </div>
+    <div class="cell label-cell"><span style="width:3px;height:28px;background:#1D9E75;border-radius:2px;flex-shrink:0"></span><span style="font-size:12px;font-weight:700;color:#1D9E75;text-transform:uppercase;letter-spacing:.05em">Expand</span></div><div class="cell" style="background:#fff"><div class="count">1 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><div class="count-sub">$2.1M ARR</div></div><div class="cell" style="background:#fafaf8"><div class="badge-wrap"><div class="count">0 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><span class="badge badge-up" data-panel="expand-q1-out" onclick="toggle(this)">&minus;1 out</span></div><div class="count-sub">$0K ARR</div></div><div class="cell" style="background:#f5f4f1"><div class="badge-wrap"><div class="count">2 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><span class="badge badge-down" data-panel="expand-q2-in" onclick="toggle(this)">+2 in</span></div><div class="count-sub">$1.8M ARR</div></div>
   </div>
-  <div class="detail-panel" id="expand-apr-out"><div class="detail-inner">
-    <div class="detail-title">Left Expand &mdash; Apr 2026</div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-expand">Expand</span><span class="arrow">&rarr;</span><span class="tag tag-protect">Protect</span></div><div class="mover-text"><strong>CyberArk</strong> &mdash; $0.6M ARR. Health stayed in Green but momentum turned negative from declining incident activity and pricing friction. Dropped to Protect while health remained intact.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-expand">Expand</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Disney</strong> &mdash; $2.1M ARR. Health fell from Green into Yellow as EWS deteriorated and sentiment worsened. Would continue declining into Needs Attention the following quarter.</div></div>
-  </div></div>
-  <div class="detail-panel" id="expand-may-in"><div class="detail-inner">
-    <div class="detail-title">Entered Expand &mdash; May 2026</div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-expand">Expand</span></div><div class="mover-text"><strong>Hotstar</strong> &mdash; $0.7M ARR. Was in Needs Attention in Q4 and moved through Nurture in Q1. By May health reached 58 and strong deployment growth drove momentum high enough to reach Expand.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-expand">Expand</span></div><div class="mover-text"><strong>chewy-1</strong> &mdash; $1.1M ARR. Was in Needs Attention in Q4 and Q1 despite improving health because momentum was still too negative. By May health reached 60 and sentiment improved significantly, clearing the Expand threshold.</div></div>
-  </div></div>
+<div class="detail-panel" id="expand-q1-out"><div class="detail-inner">
+  <div class="detail-title">Left Expand &mdash; Apr 2026</div>
+  <div class="mover-row"><div class="mover-tags"><span class="tag tag-expand">Expand</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Disney</strong> &mdash; $2.1M ARR. Health moved from Green (59.0) to Yellow (48.6). momentum shifted from stable to negative.</div></div>
+</div></div>
+<div class="detail-panel" id="expand-q2-in"><div class="detail-inner">
+  <div class="detail-title">Entered Expand &mdash; May 2026</div>
+  <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-expand">Expand</span></div><div class="mover-text"><strong>Hotstar</strong> &mdash; $694K ARR. Health moved from Yellow (48.3) to Green (58.3). momentum stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-expand">Expand</span></div><div class="mover-text"><strong>chewy-1</strong> &mdash; $1.1M ARR. Health moved from Yellow (54.2) to Green (60.2). momentum stable.</div></div>
+</div></div>
 
   <!-- PROTECT -->
   <div class="grid-row">
-    <div class="cell label-cell"><span style="width:3px;height:28px;background:#BA7517;border-radius:2px;flex-shrink:0"></span><span style="font-size:12px;font-weight:700;color:#BA7517;text-transform:uppercase;letter-spacing:.05em">Protect</span></div>
-    <div class="cell" style="background:#fff"><div class="count">2 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><div class="count-sub">$1.8M ARR</div></div>
-    <div class="cell" style="background:#fafaf8">
-      <div class="badge-wrap"><div class="count">2 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><span class="badge badge-up" onclick="toggle('protect-apr-in')">+1 in</span><span class="badge badge-down" onclick="toggle('protect-apr-out')">&minus;1 out</span></div>
-      <div class="count-sub">$1.8M ARR</div>
-    </div>
-    <div class="cell" style="background:#f5f4f1"><div class="count">2 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><div class="count-sub">$1.8M ARR</div></div>
+    <div class="cell label-cell"><span style="width:3px;height:28px;background:#BA7517;border-radius:2px;flex-shrink:0"></span><span style="font-size:12px;font-weight:700;color:#BA7517;text-transform:uppercase;letter-spacing:.05em">Protect</span></div><div class="cell" style="background:#fff"><div class="count">3 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><div class="count-sub">$2.4M ARR</div></div><div class="cell" style="background:#fafaf8"><div class="badge-wrap"><div class="count">2 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><span class="badge badge-up" data-panel="protect-q1-out" onclick="toggle(this)">&minus;1 out</span></div><div class="count-sub">$1.8M ARR</div></div><div class="cell" style="background:#f5f4f1"><div class="badge-wrap"><div class="count">2 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div></div><div class="count-sub">$1.8M ARR</div></div>
   </div>
-  <div class="detail-panel" id="protect-apr-in"><div class="detail-inner">
-    <div class="detail-title">Entered Protect &mdash; Apr 2026</div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-expand">Expand</span><span class="arrow">&rarr;</span><span class="tag tag-protect">Protect</span></div><div class="mover-text"><strong>CyberArk</strong> &mdash; $0.6M ARR. Moved from Expand as momentum turned negative. Green health intact, but declining incident activity, pricing friction, and lower sentiment combined to push momentum below the threshold.</div></div>
-  </div></div>
-  <div class="detail-panel" id="protect-apr-out"><div class="detail-inner">
-    <div class="detail-title">Left Protect &mdash; Apr 2026</div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-protect">Protect</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>London Stock Exchange Group</strong> &mdash; $0.6M ARR. Health fell from 68 to 50, dropping out of Green. Momentum turned negative, triggering the Yellow-plus-Negative routing directly into Needs Attention.</div></div>
-  </div></div>
+<div class="detail-panel" id="protect-q1-out"><div class="detail-inner">
+  <div class="detail-title">Left Protect &mdash; Apr 2026</div>
+  <div class="mover-row"><div class="mover-tags"><span class="tag tag-protect">Protect</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>London Stock Exchange Group</strong> &mdash; $625K ARR. Health moved from Green (67.5) to Yellow (50.2). momentum shifted from negative to stable.</div></div>
+</div></div>
 
   <!-- NURTURE -->
   <div class="grid-row">
-    <div class="cell label-cell"><span style="width:3px;height:28px;background:#7F77DD;border-radius:2px;flex-shrink:0"></span><span style="font-size:12px;font-weight:700;color:#7F77DD;text-transform:uppercase;letter-spacing:.05em">Nurture</span></div>
-    <div class="cell" style="background:#fff"><div class="count">13 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><div class="count-sub">$9.6M ARR</div></div>
-    <div class="cell" style="background:#fafaf8">
-      <div class="badge-wrap"><div class="count">15 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><span class="badge badge-up" onclick="toggle('nurture-apr-in')">+9 in</span><span class="badge badge-down" onclick="toggle('nurture-apr-out')">&minus;7 out</span></div>
-      <div class="count-sub">$13.5M ARR</div>
-    </div>
-    <div class="cell" style="background:#f5f4f1">
-      <div class="badge-wrap"><div class="count">9 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><span class="badge badge-down" onclick="toggle('nurture-may-out')">&minus;6 out</span></div>
-      <div class="count-sub">$7.9M ARR</div>
-    </div>
+    <div class="cell label-cell"><span style="width:3px;height:28px;background:#534AB7;border-radius:2px;flex-shrink:0"></span><span style="font-size:12px;font-weight:700;color:#534AB7;text-transform:uppercase;letter-spacing:.05em">Nurture</span></div><div class="cell" style="background:#fff"><div class="count">14 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><div class="count-sub">$10.2M ARR</div></div><div class="cell" style="background:#fafaf8"><div class="badge-wrap"><div class="count">14 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><span class="badge badge-down" data-panel="nurture-q1-in" onclick="toggle(this)">+7 in</span><span class="badge badge-up" data-panel="nurture-q1-out" onclick="toggle(this)">&minus;7 out</span></div><div class="count-sub">$11.0M ARR</div></div><div class="cell" style="background:#f5f4f1"><div class="badge-wrap"><div class="count">8 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><span class="badge badge-down" data-panel="nurture-q2-in" onclick="toggle(this)">+2 in</span><span class="badge badge-up" data-panel="nurture-q2-out" onclick="toggle(this)">&minus;8 out</span></div><div class="count-sub">$7.4M ARR</div></div>
   </div>
-  <div class="detail-panel" id="nurture-apr-in"><div class="detail-inner">
-    <div class="detail-title">Entered Nurture &mdash; Apr 2026</div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Aruba Networks</strong> &mdash; $0.6M ARR. Health recovered from Red back into Yellow and deployment signals stabilized. The improvement proved temporary &mdash; the account returned to Needs Attention in Q2.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>BlackRock</strong> &mdash; $1.0M ARR. Seat deployment improved and sentiment stabilized in Q1, reversing the negative momentum. Has remained in Nurture since.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-expand">Expand</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Disney</strong> &mdash; $2.1M ARR. Health dropped out of Green into Yellow. A further decline would follow in Q2 when the account moved to Needs Attention.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>F5, Inc.</strong> &mdash; $0.5M ARR. Health recovered fractionally above the Red threshold. The improvement was temporary &mdash; the account slipped back into Needs Attention by May.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>GitHub</strong> &mdash; $0.9M ARR. Momentum improved as deployment and sentiment trends recovered. Has continued improving and remains in Nurture in Q2.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Hotstar</strong> &mdash; $0.7M ARR. Strong deployment growth and improving health drove a recovery out of Needs Attention. Would reach Expand by Q2.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Infor (US), Inc.</strong> &mdash; $1.1M ARR. Deployment and engagement signals improved in Q1. Has remained in Nurture through Q2.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Riot Games</strong> &mdash; $0.6M ARR. Incident volume growth and stabilizing sentiment moved the account out of Needs Attention. The improvement did not hold through Q2.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>chewy-1</strong> &mdash; $1.1M ARR. Health improved into Yellow and some momentum signals recovered, but not enough to fully clear the Expand threshold yet. Would reach Expand in Q2.</div></div>
-  </div></div>
-  <div class="detail-panel" id="nurture-apr-out"><div class="detail-inner">
-    <div class="detail-title">Left Nurture &mdash; Apr 2026</div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>BD Ops</strong> &mdash; $0.9M ARR. Health fell sharply from 54 to 41 and momentum turned strongly negative. Engagement and deployment signals deteriorated in tandem.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Datadog</strong> &mdash; $0.9M ARR. Health crashed from 43 to 25 in a single quarter. A severe simultaneous deterioration across deployment, sentiment, and EWS signals.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>EpsilonCPTS</strong> &mdash; $0.6M ARR. EWS deteriorated and momentum signals worsened across the board. Has remained in Needs Attention through Q2.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Jeppesen Sanderson</strong> &mdash; $0.5M ARR. Health fell from 42 to 25 and momentum hit the worst reading in the portfolio. Multiple signals collapsed simultaneously.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Just Eat</strong> &mdash; $0.5M ARR. EWS declined and sentiment and deployment signals weakened, tipping the account over the threshold.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Schneider</strong> &mdash; $0.5M ARR. Sentiment fell to very low and EWS continued declining, driving momentum negative enough to trigger routing.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>fedex</strong> &mdash; $1.0M ARR. Health dropped from Yellow into Red and both deployment and incident activity trends turned negative together.</div></div>
-  </div></div>
-  <div class="detail-panel" id="nurture-may-out"><div class="detail-inner">
-    <div class="detail-title">Left Nurture &mdash; May 2026</div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-expand">Expand</span></div><div class="mover-text"><strong>Hotstar</strong> &mdash; $0.7M ARR. Continued recovering. Health reached 58 and strong deployment growth drove momentum high enough to graduate to Expand.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-expand">Expand</span></div><div class="mover-text"><strong>chewy-1</strong> &mdash; $1.1M ARR. Health reached 60 and sentiment improved significantly, clearing the Expand threshold after two quarters in the risk categories.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Aruba Networks</strong> &mdash; $0.6M ARR. The Q1 recovery did not hold. Health slipped back toward Red and momentum worsened, returning the account to Needs Attention.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Disney</strong> &mdash; $2.1M ARR. Continued its three-quarter decline. Health remained in Yellow but momentum worsened enough to trigger Needs Attention routing. The largest account by ARR to deteriorate across this full period.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>F5, Inc.</strong> &mdash; $0.5M ARR. The brief Q1 recovery did not hold. Health slipped back below the Red threshold and the momentum override triggered, moving the account back to Needs Attention.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Riot Games</strong> &mdash; $0.6M ARR. Sentiment deteriorated and EWS resumed declining after the brief Q1 improvement, pushing the account back into Needs Attention.</div></div>
-  </div></div>
+<div class="detail-panel" id="nurture-q1-in"><div class="detail-inner">
+  <div class="detail-title">Entered Nurture &mdash; Apr 2026</div>
+  <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Aruba Networks</strong> &mdash; $566K ARR. Health moved from Red (36.0) to Yellow (42.2). momentum shifted from negative to stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>F5, Inc.</strong> &mdash; $523K ARR. Health moved from Red (34.2) to Yellow (41.2). momentum shifted from negative to stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>GitHub</strong> &mdash; $871K ARR. Health moved from Yellow (40.2) to Red (37.7). momentum shifted from negative to stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Hotstar</strong> &mdash; $694K ARR. Health moved from Red (31.0) to Yellow (48.3). momentum shifted from negative to stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-protect">Protect</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>London Stock Exchange Group</strong> &mdash; $625K ARR. Health moved from Green (67.5) to Yellow (50.2). momentum shifted from negative to stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Northwestern Mutual</strong> &mdash; $1.0M ARR. Health moved from Yellow (42.2) to Red (38.4). momentum shifted from negative to stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>chewy-1</strong> &mdash; $1.1M ARR. Health Yellow (54.2). momentum shifted from negative to stable.</div></div>
+</div></div>
+<div class="detail-panel" id="nurture-q1-out"><div class="detail-inner">
+  <div class="detail-title">Left Nurture &mdash; Apr 2026</div>
+  <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>BD Ops</strong> &mdash; $841K ARR. Health Yellow (41.4). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Datadog</strong> &mdash; $918K ARR. Health moved from Yellow (42.5) to Red (25.2). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>EpsilonCPTS</strong> &mdash; $551K ARR. Health Red (39.4). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Jeppesen Sanderson</strong> &mdash; $507K ARR. Health moved from Yellow (42.5) to Red (25.1). momentum shifted from positive to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Just Eat</strong> &mdash; $530K ARR. Health Yellow (43.4). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Schneider</strong> &mdash; $516K ARR. Health moved from Yellow (42.5) to Red (30.7). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>fedex</strong> &mdash; $1.0M ARR. Health moved from Yellow (49.6) to Red (38.3). momentum shifted from positive to stable.</div></div>
+</div></div>
+<div class="detail-panel" id="nurture-q2-in"><div class="detail-inner">
+  <div class="detail-title">Entered Nurture &mdash; May 2026</div>
+  <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>BlackRock</strong> &mdash; $981K ARR. Health Yellow (42.7). momentum shifted from negative to stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Infor (US), Inc.</strong> &mdash; $1.1M ARR. Health Yellow (44.8). momentum shifted from negative to stable.</div></div>
+</div></div>
+<div class="detail-panel" id="nurture-q2-out"><div class="detail-inner">
+  <div class="detail-title">Left Nurture &mdash; May 2026</div>
+  <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>ADUSA Digital</strong> &mdash; $510K ARR. Health Yellow (43.2). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Aruba Networks</strong> &mdash; $566K ARR. Health moved from Yellow (42.2) to Red (37.9). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>F5, Inc.</strong> &mdash; $523K ARR. Health moved from Yellow (41.2) to Red (39.6). momentum stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-expand">Expand</span></div><div class="mover-text"><strong>Hotstar</strong> &mdash; $694K ARR. Health moved from Yellow (48.3) to Green (58.3). momentum stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>London Stock Exchange Group</strong> &mdash; $625K ARR. Health Yellow (49.5). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Northwestern Mutual</strong> &mdash; $1.0M ARR. Health Red (37.0). momentum stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Riot Games</strong> &mdash; $606K ARR. Health moved from Red (39.3) to Yellow (44.1). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-expand">Expand</span></div><div class="mover-text"><strong>chewy-1</strong> &mdash; $1.1M ARR. Health moved from Yellow (54.2) to Green (60.2). momentum stable.</div></div>
+</div></div>
 
   <!-- NEEDS ATTENTION -->
   <div class="grid-row">
-    <div class="cell label-cell"><span style="width:3px;height:28px;background:#E24B4A;border-radius:2px;flex-shrink:0"></span><span style="font-size:12px;font-weight:700;color:#E24B4A;text-transform:uppercase;letter-spacing:.05em">Needs Attention</span></div>
-    <div class="cell" style="background:#fff"><div class="count">28 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><div class="count-sub">$38.0M ARR</div></div>
-    <div class="cell" style="background:#fafaf8">
-      <div class="badge-wrap"><div class="count">28 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><span class="badge badge-down" onclick="toggle('na-apr-in')">+8 in</span><span class="badge badge-up" onclick="toggle('na-apr-out')">&minus;8 out</span></div>
-      <div class="count-sub">$37.4M ARR</div>
-    </div>
-    <div class="cell" style="background:#f5f4f1">
-      <div class="badge-wrap"><div class="count">32 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><span class="badge badge-down" onclick="toggle('na-may-in')">+4 in</span></div>
-      <div class="count-sub">$40.0M ARR</div>
-    </div>
+    <div class="cell label-cell"><span style="width:3px;height:28px;background:#E24B4A;border-radius:2px;flex-shrink:0"></span><span style="font-size:12px;font-weight:700;color:#E24B4A;text-transform:uppercase;letter-spacing:.05em">Needs Attention</span></div><div class="cell" style="background:#fff"><div class="count">27 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><div class="count-sub">$37.4M ARR</div></div><div class="cell" style="background:#fafaf8"><div class="badge-wrap"><div class="count">29 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><span class="badge badge-down" data-panel="needs-attention-q1-in" onclick="toggle(this)">+8 in</span><span class="badge badge-up" data-panel="needs-attention-q1-out" onclick="toggle(this)">&minus;6 out</span></div><div class="count-sub">$39.9M ARR</div></div><div class="cell" style="background:#f5f4f1"><div class="badge-wrap"><div class="count">33 <span style="font-size:12px;font-weight:400;color:#aaa">accounts</span></div><span class="badge badge-down" data-panel="needs-attention-q2-in" onclick="toggle(this)">+6 in</span><span class="badge badge-up" data-panel="needs-attention-q2-out" onclick="toggle(this)">&minus;2 out</span></div><div class="count-sub">$40.5M ARR</div></div>
   </div>
-  <div class="detail-panel" id="na-apr-in"><div class="detail-inner">
-    <div class="detail-title">Entered Needs Attention &mdash; Apr 2026</div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>BD Ops</strong> &mdash; $0.9M ARR. Health fell from 54 to 41 with momentum turning strongly negative across multiple signals simultaneously.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Datadog</strong> &mdash; $0.9M ARR. Health crashed from 43 to 25. The most severe single-quarter health deterioration in the portfolio.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>EpsilonCPTS</strong> &mdash; $0.6M ARR. EWS and momentum deteriorated together. Has not recovered through Q2.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Jeppesen Sanderson</strong> &mdash; $0.5M ARR. Health fell from 42 to 25 and momentum hit the portfolio low. Broad simultaneous deterioration across all tracked signals.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Just Eat</strong> &mdash; $0.5M ARR. EWS decline and weakening sentiment and deployment signals tipped the account over the threshold.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-protect">Protect</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>London Stock Exchange Group</strong> &mdash; $0.6M ARR. Health dropped out of Green and momentum turned negative, routing the account directly from Protect into Needs Attention.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Schneider</strong> &mdash; $0.5M ARR. Sentiment fell to very low and EWS decline continued, triggering the routing threshold.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>fedex</strong> &mdash; $1.0M ARR. Health dropped into Red and both deployment and incident activity turned negative. Has remained in Needs Attention through Q2.</div></div>
-  </div></div>
-  <div class="detail-panel" id="na-apr-out"><div class="detail-inner">
-    <div class="detail-title">Left Needs Attention &mdash; Apr 2026</div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Aruba Networks</strong> &mdash; $0.6M ARR. Health recovered above Red and momentum improved. The recovery was temporary &mdash; the account returned to Needs Attention in Q2.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>BlackRock</strong> &mdash; $1.0M ARR. Deployment improved and sentiment stabilized. Has remained in Nurture through Q2.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>F5, Inc.</strong> &mdash; $0.5M ARR. Health briefly recovered above the Red threshold. Would slip back in Q2.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>GitHub</strong> &mdash; $0.9M ARR. Momentum recovered as deployment and sentiment trends improved. Has remained in Nurture through Q2.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Hotstar</strong> &mdash; $0.7M ARR. Strong deployment growth. Continued improving to reach Expand in Q2.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Infor (US), Inc.</strong> &mdash; $1.1M ARR. Deployment and engagement signals improved enough to move out of Needs Attention. Has remained in Nurture.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Riot Games</strong> &mdash; $0.6M ARR. Incident growth and sentiment stabilized in Q1. The improvement did not persist through Q2.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>chewy-1</strong> &mdash; $1.1M ARR. Health improved but momentum still too negative to leave Needs Attention fully. Would reach Expand in Q2.</div></div>
-  </div></div>
-  <div class="detail-panel" id="na-may-in"><div class="detail-inner">
-    <div class="detail-title">Entered Needs Attention &mdash; May 2026</div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Aruba Networks</strong> &mdash; $0.6M ARR. The Q1 improvement did not hold. Deployment and sentiment signals weakened again, returning the account to Needs Attention.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Disney</strong> &mdash; $2.1M ARR. Completed a three-quarter decline from Expand. Health remained in Yellow but momentum turned sufficiently negative to trigger Needs Attention routing. The largest account by ARR to deteriorate across this period.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>F5, Inc.</strong> &mdash; $0.5M ARR. Health slipped back below the Red threshold. The Red-health override fired and routed the account back to Needs Attention.</div></div>
-    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Riot Games</strong> &mdash; $0.6M ARR. Sentiment deteriorated and EWS resumed declining after the brief Q1 improvement.</div></div>
-  </div></div>
+<div class="detail-panel" id="needs-attention-q1-in"><div class="detail-inner">
+  <div class="detail-title">Entered Needs Attention &mdash; Apr 2026</div>
+  <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>BD Ops</strong> &mdash; $841K ARR. Health Yellow (41.4). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Datadog</strong> &mdash; $918K ARR. Health moved from Yellow (42.5) to Red (25.2). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-expand">Expand</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Disney</strong> &mdash; $2.1M ARR. Health moved from Green (59.0) to Yellow (48.6). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>EpsilonCPTS</strong> &mdash; $551K ARR. Health Red (39.4). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Jeppesen Sanderson</strong> &mdash; $507K ARR. Health moved from Yellow (42.5) to Red (25.1). momentum shifted from positive to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Just Eat</strong> &mdash; $530K ARR. Health Yellow (43.4). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Schneider</strong> &mdash; $516K ARR. Health moved from Yellow (42.5) to Red (30.7). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>fedex</strong> &mdash; $1.0M ARR. Health moved from Yellow (49.6) to Red (38.3). momentum shifted from positive to stable.</div></div>
+</div></div>
+<div class="detail-panel" id="needs-attention-q1-out"><div class="detail-inner">
+  <div class="detail-title">Left Needs Attention &mdash; Apr 2026</div>
+  <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Aruba Networks</strong> &mdash; $566K ARR. Health moved from Red (36.0) to Yellow (42.2). momentum shifted from negative to stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>F5, Inc.</strong> &mdash; $523K ARR. Health moved from Red (34.2) to Yellow (41.2). momentum shifted from negative to stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>GitHub</strong> &mdash; $871K ARR. Health moved from Yellow (40.2) to Red (37.7). momentum shifted from negative to stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Hotstar</strong> &mdash; $694K ARR. Health moved from Red (31.0) to Yellow (48.3). momentum shifted from negative to stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Northwestern Mutual</strong> &mdash; $1.0M ARR. Health moved from Yellow (42.2) to Red (38.4). momentum shifted from negative to stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>chewy-1</strong> &mdash; $1.1M ARR. Health Yellow (54.2). momentum shifted from negative to stable.</div></div>
+</div></div>
+<div class="detail-panel" id="needs-attention-q2-in"><div class="detail-inner">
+  <div class="detail-title">Entered Needs Attention &mdash; May 2026</div>
+  <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>ADUSA Digital</strong> &mdash; $510K ARR. Health Yellow (43.2). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Aruba Networks</strong> &mdash; $566K ARR. Health moved from Yellow (42.2) to Red (37.9). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>F5, Inc.</strong> &mdash; $523K ARR. Health moved from Yellow (41.2) to Red (39.6). momentum stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>London Stock Exchange Group</strong> &mdash; $625K ARR. Health Yellow (49.5). momentum shifted from stable to negative.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Northwestern Mutual</strong> &mdash; $1.0M ARR. Health Red (37.0). momentum stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-nurture">Nurture</span><span class="arrow">&rarr;</span><span class="tag tag-na">Needs Attention</span></div><div class="mover-text"><strong>Riot Games</strong> &mdash; $606K ARR. Health moved from Red (39.3) to Yellow (44.1). momentum shifted from stable to negative.</div></div>
+</div></div>
+<div class="detail-panel" id="needs-attention-q2-out"><div class="detail-inner">
+  <div class="detail-title">Left Needs Attention &mdash; May 2026</div>
+  <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>BlackRock</strong> &mdash; $981K ARR. Health Yellow (42.7). momentum shifted from negative to stable.</div></div>
+    <div class="mover-row"><div class="mover-tags"><span class="tag tag-na">Needs Attention</span><span class="arrow">&rarr;</span><span class="tag tag-nurture">Nurture</span></div><div class="mover-text"><strong>Infor (US), Inc.</strong> &mdash; $1.1M ARR. Health Yellow (44.8). momentum shifted from negative to stable.</div></div>
+</div></div>
 
-</div></div></div>
+</div></div>
+
+<div class="method-note">
+All group assignments computed using the full framework scoring logic: Health = EWS_SCORE &times; 100; 
+Momentum from 11 signal groups (deployment slope, 3-month window, incident OLS, EWMA, sentiment level, 
+sentiment direction, pricing friction, ARR downgrades, EWS trend, EWS sudden drop, EWS persistence); 
+Competitor overrides (F_INCIDENT_IO_RISK, API_WATCH_POINT_SOLUTION_12M_BOOLEAN, API_WATCH_IN_CUSTOMER). 
+FY26 Q4 snapshot = Jan 2026 data (DATE_ID 20260101). FY27 Q1 = Apr 2026 (20260401). FY27 Q2 = May 2026 (20260501). 
+No estimates or approximations. All 45 accounts scored at each snapshot date using data available at that point in time.
+</div>
+
+</div>
 <script>
-function toggle(id){
-  const panel=document.getElementById(id);
-  const btn=document.querySelector('[onclick="toggle(\''+id+'\')"]');
-  const wasOpen=panel.classList.contains('open');
-  document.querySelectorAll('.detail-panel').forEach(p=>p.classList.remove('open'));
-  document.querySelectorAll('.badge').forEach(b=>b.classList.remove('badge-active'));
-  if(!wasOpen){panel.classList.add('open');if(btn)btn.classList.add('badge-active');panel.scrollIntoView({behavior:'smooth',block:'nearest'});}
+function toggle(btn){
+  var id=btn.dataset.panel;
+  var panel=document.getElementById(id);
+  var wasOpen=panel.classList.contains('open');
+  document.querySelectorAll('.detail-panel').forEach(function(p){p.classList.remove('open');});
+  document.querySelectorAll('.badge').forEach(function(b){b.classList.remove('badge-active');});
+  if(!wasOpen){panel.classList.add('open');btn.classList.add('badge-active');panel.scrollIntoView({behavior:'smooth',block:'nearest'});}
 }
 </script>
 </body>
